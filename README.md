@@ -40,7 +40,6 @@ df_long_long%>%spread(var_name,var_value)
 
 # long to wide multiple variables
 
-```
 set.seed(0)
 (df2<-data.frame(id=rep(1:3,each=6),
                  group1=rep(rep(LETTERS[1:3],2),3),
@@ -51,7 +50,6 @@ set.seed(0)
 df2%>%gather(variable,value,yy1,yy2)%>%
   unite(temp,variable,group1,group2)%>%
   spread(temp,value)
-```
 
 # Group mean
 
