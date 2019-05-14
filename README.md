@@ -78,4 +78,10 @@ df3<-df%>%select(id,tt,yy2)%>%rename(id_new=id,tt_new=tt)
 
 left_join(df1,df2,by=c("id"="id","tt"="tt"))
 left_join(df1,df3,by=c("id"="id_new","tt"="tt_new"))
+
+# remove duplicates
+
+df %>% distinct(x, y, .keep_all = TRUE)
+
+
 ```
