@@ -81,7 +81,7 @@ left_join(df1,df3,by=c("id"="id_new","tt"="tt_new"))
 
 # remove duplicates
 
-df %>% distinct(x, y, .keep_all = TRUE)
-
+df %>% distinct(x, y, .keep_all = TRUE) ## distinct rows by x and y
+df %>% distinct.keep_all = TRUE) ## distinct rows by all columns
 
 ```
