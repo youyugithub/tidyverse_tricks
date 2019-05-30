@@ -84,4 +84,12 @@ left_join(df1,df3,by=c("id"="id_new","tt"="tt_new"))
 df %>% distinct(x, y, .keep_all = TRUE) ## distinct rows by x and y
 df %>% distinct.keep_all = TRUE) ## distinct rows by all columns
 
+# read multiple csv files
+
+library(tidyverse)
+library(data.table)
+
+allfilenames<-file.path(dirdirdir,list.files(path=dirdirdir,pattern="*.csv"))
+raw_df<-allfilenames%>%map_df(~fread(.,stringsAsFactors=FALSE))
+
 ```
