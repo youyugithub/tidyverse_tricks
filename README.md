@@ -92,4 +92,8 @@ library(data.table)
 allfilenames<-file.path(dirdirdir,list.files(path=dirdirdir,pattern="*.csv"))
 raw_df<-allfilenames%>%map_df(~fread(.,stringsAsFactors=FALSE))
 
+# summarise all columns
+
+...%>%summarise_all(funs(mean))
+
 ```
