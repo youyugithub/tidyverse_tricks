@@ -96,4 +96,8 @@ raw_df<-allfilenames%>%map_df(~fread(.,stringsAsFactors=FALSE))
 
 ...%>%summarise_all(funs(mean))
 
+# pull out a column / get one column from data.frame
+
+iris2%>%pull(Species)
+
 ```
