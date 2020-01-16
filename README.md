@@ -100,4 +100,9 @@ raw_df<-allfilenames%>%map_df(~fread(.,stringsAsFactors=FALSE))
 
 iris2%>%pull(Species)
 
+# row means of several columns
+
+iris%>%mutate(Sepal=rowMeans(select(.,1:2)))
+iris%>%mutate(Sepal=rowMeans(select(.,contains("Sepal"))))
+
 ```
