@@ -105,4 +105,40 @@ iris2%>%pull(Species)
 iris%>%mutate(Sepal=rowMeans(select(.,1:2)))
 iris%>%mutate(Sepal=rowMeans(select(.,contains("Sepal"))))
 
+# select columns by number and variable names
+
+rawdata_heart%>%select(1:3,4:(4+11),28:(28+11),52:(52+11),time)
+
+# specify the order of measures:
+
+dataset%>%arrange(match(measure,c("strain","strain_rate","VCAM","IL6","GAL3")))
+
+# summarize n, mean, sd and then convert to wide data
+
+df_BL<-df_xxxxx%>%
+  filter(Event_Name=="Baseline")%>%
+  group_by(Group)%>%
+  summarise(n=sum(!is.na(xxxxx)),
+            mean=mean(xxxxx),
+            sd=sd(xxxxx))%>%
+  pivot_wider(names_from="Group",values_from=c("n","mean","sd"),names_sep=" ")%>%
+  mutate(variable="xxxxx")%>%select(variable,everything())
+
+# ggplot, interaction plot, add group mean, add standard error bar
+
+ggplot(df_xxxxx,aes(x=Event_Name,y=xxxxx,group=Record_ID,col=Group))+
+  geom_line()+geom_point()+
+  stat_summary(aes(group=Group),fun.y=mean,geom="line",cex=2)+
+  stat_summary(aes(group=Group,width=0.2),fun.data=mean_se,geom="errorbar",cex=1.5,alpha=0.25)+
+  ggtitle("xxxxx")
+
+# ggplot, group comparison, add group mean, add standard error bar
+
+p2<-ggplot(df_xxxxx_diff%>%na.omit(),aes(x=Group,y=diff,color=Group))+ 
+  stat_summary(fun.y=mean,geom="point",cex=3)+
+  stat_summary(fun.data=mean_sdl,geom="errorbar",fun.args=list(mult=1))+
+  stat_summary(fun.data=mean_se,geom="errorbar",aes(width=0.25))+
+  geom_jitter()+
+  ggtitle("xxxxx")
+
 ```
