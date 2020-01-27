@@ -140,5 +140,9 @@ p2<-ggplot(df_xxxxx_diff%>%na.omit(),aes(x=Group,y=diff,color=Group))+
   stat_summary(fun.data=mean_se,geom="errorbar",aes(width=0.25))+
   geom_jitter()+
   ggtitle("xxxxx")
+  
+# repair names
+
+gsub("\\s","_",trimws(gsub("\\."," ",gsub('\\.+','.',make.names(names(rawdata),unique=T)))))
 
 ```
