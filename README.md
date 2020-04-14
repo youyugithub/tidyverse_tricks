@@ -145,4 +145,26 @@ p2<-ggplot(df_xxxxx_diff%>%na.omit(),aes(x=Group,y=diff,color=Group))+
 
 gsub("\\s","_",trimws(gsub("\\."," ",gsub('\\.+','.',make.names(names(rawdata),unique=T)))))
 
+# case_when case when
+
+x<-c(1:100,NA,NA,NA)
+dplyr::case_when(
+  x %in% 1 ~ 0,
+  x %in% 2:5 ~ 1)
+dplyr::case_when(
+  x %in% 1 ~ 0,
+  x %in% 2:5 ~ 1,
+  TRUE ~ as.numeric(x))
+dplyr::case_when(
+  x %in% 1 ~ 0,
+  x %in% 2:5 ~ 1,
+  is.na(x) ~ -100,
+  TRUE ~ as.numeric(x))
+dplyr::case_when(
+  x %in% 1 ~ 0,
+  x %in% 2:5 ~ 1,
+  TRUE ~ as.numeric(x),
+  is.na(x) ~ -100)
+
+
 ```
