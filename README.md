@@ -166,5 +166,14 @@ dplyr::case_when(
   TRUE ~ as.numeric(x),
   is.na(x) ~ -100)
 
+# mutate severl columns
+
+now %>%
+  mutate_at(q1:q5,
+            funs(case_when(
+              . == "None" ~ 0,
+              . == "Mild" ~ 1,
+              . == "Moderate" ~ 2,
+              TRUE == NA)))
 
 ```
