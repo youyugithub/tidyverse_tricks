@@ -1,7 +1,5 @@
 # Tidyverse Tricks
 Tidyverse Tricks
-Tidyverse 骚操作集
-
 
 ```
 library(tidyverse)
