@@ -142,6 +142,7 @@ p2<-ggplot(df_xxxxx_diff%>%na.omit(),aes(x=Group,y=diff,color=Group))+
 # repair names
 
 gsub("\\s","_",trimws(gsub("\\."," ",gsub('\\.+','.',make.names(names(rawdata),unique=T)))))
+trimws(gsub("\\.+","_",make.names(names(rawdata))),whitespace="_")
 
 # case_when case when
 
