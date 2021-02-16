@@ -176,3 +176,9 @@ now %>%
               TRUE == NA)))
 
 ```
+
+## id within group
+
+```
+df %>% group_by(cat) %>% mutate(id = row_number())
+```
