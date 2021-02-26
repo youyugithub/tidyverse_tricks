@@ -182,3 +182,8 @@ now %>%
 ```
 df %>% group_by(cat) %>% mutate(id = row_number())
 ```
+
+## lag
+```
+lag(xx,n=?,default=?)
+```
