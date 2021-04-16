@@ -193,3 +193,24 @@ lag(xx,n=?,default=?)
 gsub(".* -> ", "", c("a -> b","cd -> dd"))
 gsub(" -> .*", "", c("a -> b","cd -> dd"))
 ```
+
+# regex vs glob
+```
+
+The fast dog is fast.
+The faster dogs are faster.
+A sick dog should see a dogdoc.
+This file is filename.doc
+
+If you type:
+
+
+grep "fast*" filename.doc
+
+The first two lines will match. Whether you're thinking globs or regex, that makes sense. But if you type:
+
+
+grep "dogs*" filename.doc
+
+The first three lines will match, but if you're thinking in globs, that doesn't make sense. Since grep uses regular expressions (regex) when searching files, the asterisk means "zero or more occurrences of the previous character", so in the second example, it matches dog and dogs, because having zero "s" characters matches the regex.
+```
