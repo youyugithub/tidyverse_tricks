@@ -187,3 +187,9 @@ df %>% group_by(cat) %>% mutate(id = row_number())
 ```
 lag(xx,n=?,default=?)
 ```
+
+## Extract string
+```
+gsub(".* -> ", "", c("a -> b","cd -> dd"))
+gsub(" -> .*", "", c("a -> b","cd -> dd"))
+```
