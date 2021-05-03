@@ -214,3 +214,9 @@ grep "dogs*" filename.doc
 
 The first three lines will match, but if you're thinking in globs, that doesn't make sense. Since grep uses regular expressions (regex) when searching files, the asterisk means "zero or more occurrences of the previous character", so in the second example, it matches dog and dogs, because having zero "s" characters matches the regex.
 ```
+
+## Count missing by row / across!
+
+```
+mutate(nmissing=rowSums(is.na(across(X1:X5))
+```
