@@ -220,3 +220,10 @@ The first three lines will match, but if you're thinking in globs, that doesn't 
 ```
 mutate(nmissing=rowSums(is.na(across(X1:X5))
 ```
+
+## reformulate formula
+```
+reformulate(
+  termlabels=c("x1","x2"),
+  response="Surv(time,delta)")
+```
