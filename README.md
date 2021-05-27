@@ -227,3 +227,10 @@ reformulate(
   termlabels=c("x1","x2"),
   response="Surv(time,delta)")
 ```
+
+## circle color group
+
+```
+library(ggforce)
+geom_mark_ellipse
+```
