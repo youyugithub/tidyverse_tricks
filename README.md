@@ -234,3 +234,9 @@ reformulate(
 library(ggforce)
 geom_mark_ellipse
 ```
+
+##
+
+```
+mutate(nmissing=rowSums(is.na(across(glucosem10:glucose120))))
+```
