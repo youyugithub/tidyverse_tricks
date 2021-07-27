@@ -239,4 +239,13 @@ geom_mark_ellipse
 
 ```
 mutate(nmissing=rowSums(is.na(across(glucosem10:glucose120))))
+
+df_baseline_master%>%
+  rowwise()%>%
+  mutate(xx=all(is.na(across(BAA_Date:HbA1c_Date))))
+
+df_baseline_master%>%
+  rowwise()%>%
+  mutate(xx=all(is.na(across(c(BAA_Date,BMI_Date,OGTT_Date,HbA1c_Date)))))
+
 ```
