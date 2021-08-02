@@ -250,3 +250,9 @@ df_baseline_master%>%
   mutate(xx=all(is.na(across(c(BAA_Date,BMI_Date,OGTT_Date,HbA1c_Date)))))
 
 ```
+
+## rowmeans rowsums
+
+```
+rowMeans(select(.,GLUM10,GLU0),na.rm=T)
+```
