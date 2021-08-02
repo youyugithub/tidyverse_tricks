@@ -218,7 +218,8 @@ The first three lines will match, but if you're thinking in globs, that doesn't 
 ## Count missing by row / across!
 
 ```
-mutate(nmissing=rowSums(is.na(across(X1:X5))
+mutate(nmissing=rowSums(is.na(across(X1:X5))))
+filter(rowSums(!is.na(across(X1:X5)))>=1)
 ```
 
 ## reformulate formula
