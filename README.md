@@ -143,6 +143,7 @@ p2<-ggplot(df_xxxxx_diff%>%na.omit(),aes(x=Group,y=diff,color=Group))+
 
 gsub("\\s","_",trimws(gsub("\\."," ",gsub('\\.+','.',make.names(names(rawdata),unique=T)))))
 trimws(gsub("\\.+","_",make.names(names(rawdata))),whitespace="_")
+trimws(gsub("_+","_",gsub('[^a-zA-Z0-9]','_',make.names(channel_cell_population))),whitespace="_")
 
 # case_when case when
 
