@@ -257,3 +257,31 @@ df_baseline_master%>%
 ```
 rowMeans(select(.,GLUM10,GLU0),na.rm=T)
 ```
+
+## ggplot timestamp plots
+```
+result<-bind_rows(
+  BAA_count_ver4_std%>%
+    select(Mask_ID,BAA_Date)%>%
+    mutate(Type="BAA")%>%
+    rename(Date=BAA_Date),
+  OGTT_Final_raw%>%
+    select(Mask_ID,OGTT_Date)%>%
+    mutate(Type="OGTT")%>%
+    rename(Date=OGTT_Date))
+temp<-result%>%
+  arrange(Mask_ID,Type,Date)%>%
+  group_by(Mask_ID)%>%
+  mutate(
+    BL_Date=first(Date),
+    Day=as.numeric(Date-BL_Date))%>%
+  ungroup()
+
+temp_id<-sample(temp$Mask_ID,100)
+
+ggplot(temp%>%filter(Mask_ID%in%temp_id),aes(x=Day,y=Mask_ID,group=interaction(Type,Mask_ID),color=Type))+
+  geom_point(position=ggstance::position_dodgev(height=0.7))+
+  geom_line(position=ggstance::position_dodgev(height=0.7))+
+  geom_vline(xintercept=365)+
+  theme_bw()
+```
