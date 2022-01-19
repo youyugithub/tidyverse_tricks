@@ -285,3 +285,24 @@ ggplot(temp%>%filter(Mask_ID%in%temp_id),aes(x=Day,y=Mask_ID,group=interaction(T
   geom_vline(xintercept=365)+
   theme_bw()
 ```
+
+## circles/ellipses around groups/clusters
+
+https://luisdva.github.io/rstats/Grouping-points/
+
+```
+library(dplyr)
+library(ggplot2)
+library(ggalt)
+library(ggforce)
+
+ggplot(birdsAll,aes(x=mass,y=length))+
+  geom_mark_hull(concavity = 5,expand=0,radius=0,aes(fill=age))+
+  geom_point()+
+  theme_bw()
+  
+ggplot(birdsAll,aes(x=mass,y=length))+
+  geom_mark_hull(expand=0.01,aes(fill=age))+
+  geom_point()+
+  theme_bw()
+```
