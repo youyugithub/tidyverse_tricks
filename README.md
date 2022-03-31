@@ -306,3 +306,18 @@ ggplot(birdsAll,aes(x=mass,y=length))+
   geom_point()+
   theme_bw()
 ```
+
+## check time sequence/event sequence/time check
+
+```
+paste_order<-Vectorize(function(x1,x2,x3,x4){
+  x<-c(x1,x2,x3,x4)
+  x_name<-c("t1d","cca","wd","last")
+  x_unique<-unique(sort(x))
+  result<-c()
+  for(a_x in x_unique){
+    result<-c(result,paste0(x_name[which(x==a_x)],collapse="="))
+  }
+  return(paste0(result,collapse="<"))
+})
+```
