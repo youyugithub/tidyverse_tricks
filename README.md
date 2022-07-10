@@ -321,3 +321,38 @@ paste_order<-Vectorize(function(x1,x2,x3,x4){
   return(paste0(result,collapse="<"))
 })
 ```
+## stacked barplot + percentages
+```
+library(tidyverse)
+
+sex <- c("F","F","M", "M", "M", "F","M","F","F", "M", "M", "M", "M","F","F", "M", "M", "F", "M", "F")
+behavior <- c("A", "B", "C", "A", "B","D", "C", "A", "B", "C", "A", "B", "C", "A", "B", "C", "B", "C", "A","D")
+
+BehSex <- data.frame(sex, behavior)
+BehSexSum <- BehSex %>%
+  count(sex, behavior) %>%
+  mutate(pct = n / sum(n),
+         pct_label = scales::percent(pct))
+
+ggplot(BehSexSum, aes(x= sex, fill = behavior, y = pct)) +
+  geom_col() +
+  geom_text(aes(label = pct_label), 
+            lineheight = 0.8,
+            position = position_stack(vjust = 0.5)) +
+  scale_y_continuous(labels = scales::percent)
+
+ggplot(BehSexSum, aes(x= sex, fill = behavior, y = pct)) +
+  geom_col() +
+  ggrepel::geom_label_repel(aes(label = pct_label), 
+            lineheight = 0.8,
+            position = position_stack(vjust = 0.5)) +
+  scale_y_continuous(labels = scales::percent)
+
+ggplot(BehSexSum, aes(x= sex, fill = behavior, y = pct)) +
+  geom_col() +
+  ggrepel::geom_label_repel(aes(label = pct_label), 
+                            lineheight = 0.8,
+                            position = position_stack(vjust = 0.5),
+                            direction="y") +
+  scale_y_continuous(labels = scales::percent)
+```
