@@ -356,3 +356,14 @@ ggplot(BehSexSum, aes(x= sex, fill = behavior, y = pct)) +
                             direction="y") +
   scale_y_continuous(labels = scales::percent)
 ```
+### create dummy variables
+
+```
+    mutate(
+      age_cat=as.numeric(Hmisc::cut2(age_v1,cuts=seq(70,110,20))),
+      bmi_cat=as.numeric(Hmisc::cut2(bmi_v1,cuts=seq(80,200,40))))%>%
+    as.data.table() %>%
+    {.[,paste0("i1_age_cat",1:4):=lapply(1:4,function(i)as.numeric(age_cat==i))]}%>%
+    {.[,paste0("i2_bmi_cat",1:4):=lapply(1:4,function(i)as.numeric(bmi_cat==i))]}%>%
+    as_tibble()
+```
